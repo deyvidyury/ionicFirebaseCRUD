@@ -3,23 +3,34 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
+import { AngularFireModule } from 'angularFire2';
+import { AngularFireDatabaseModule } from 'angularFire2/database';
 
 import { MyApp } from './app.component';
-import { HomePage } from '../pages/home/home';
+import { ShoppingListPage } from '../pages/shopping-list/shopping-list';
+import { AddShoppingPage } from '../pages/add-shopping/add-shopping';
+import { EditShoppingItemPage } from '../pages/edit-shopping-item/edit-shopping-item';
+import { FIREBASE_CREDENTIALS} from './firebase.credentials';
 
 @NgModule({
   declarations: [
     MyApp,
-    HomePage
+    ShoppingListPage,
+    AddShoppingPage,
+    EditShoppingItemPage
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    AngularFireModule.initializeApp(FIREBASE_CREDENTIALS),
+    AngularFireDatabaseModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage
+    ShoppingListPage,
+    AddShoppingPage,
+    EditShoppingItemPage
   ],
   providers: [
     StatusBar,
